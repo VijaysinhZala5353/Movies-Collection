@@ -1,0 +1,147 @@
+import Foundation
+// created class
+class Entertainment{
+
+    //array for movies
+    var movieNo = [12345,12345,12345,23456,23456]
+    var movieTitle = ["spider man", "spider man", "spider man", "black panther", "black panther"]
+    var movieYear = [2017,2017,2017,2018,2018]
+    var movieCinema = ["cineplex", "trademax", "rainbow", "cineplex", "cinemax"]
+    var movieIncome = [250000000,340000000,180000000,233000000,420000000]
+    
+    //array for series
+    var seriesNo = [45678,76543,98712]
+    var seriesTitle = ["stranger things", "game of thrones", "the good place"]
+    var seriesYear = [2016,2019,2018]
+    var seriesEpisodes = [36,75,45]
+    var seriesChannels = [6,9,3]
+    
+    //function for finding total income of movie & series
+    func task0()
+    {
+        print("Main task")
+        var totalMovieIncome = 0.0
+        var movieSum = 0.0
+        
+        print("Enter movie name :")
+        let movieName = String(readLine()!.lowercased())
+        
+        //loop for find income of movie
+        for income in 0..<movieIncome.count
+        {   
+            //for find movie name in movieTitle array
+            if movieTitle[income] == movieName
+           {
+                //to find sum of movie income
+                movieSum += Double(movieIncome[income])
+           }
+        }
+        
+        //to substract the profit of cinema by 40%
+        totalMovieIncome = movieSum-movieSum*0.4
+        print("Total income of movie is =", Int(totalMovieIncome))
+
+
+        var totalSeriesIncome = 0
+        print("Enter series name :")
+        let seriesName = String(readLine()!.lowercased())
+        
+        //loop for find income of series
+        for income in 0..<seriesTitle.count
+        {
+            //for find movie name in seriesTitle array
+           if seriesTitle[income] == seriesName
+           {
+                //to find total income of series
+               totalSeriesIncome = seriesEpisodes[income] * seriesChannels[income] * 50000
+           }
+        }
+        print("Total income of Series is =", totalSeriesIncome)
+        print("\n")
+    }
+    
+    //function for find the movie and series name from the given year 
+    func task1()
+    {
+        var movieNameList: [String] = []
+        print("task1")
+        print("Enter a year for the movie name")
+        let yearOfTransmit = Int(readLine()!)!
+        for year in 0..<movieNo.count
+        {
+           if movieYear[year] == yearOfTransmit
+           {
+               movieNameList.append(movieTitle[year])
+               break
+           }
+        }
+        print("movie name is: \(movieNameList[0])")
+        for year in 0..<seriesNo.count
+        {
+           if seriesYear[year] == yearOfTransmit
+           {
+               print("Series name is:", seriesTitle[year])
+           }
+        }
+        print("\n")
+    }
+    
+    //function for finding theatre name or no of episodes based on given serial number
+    func task2()
+    {
+        print("task2")
+        print("Enter series number of the movie or series")
+        let inputNo = Int(readLine()!)!
+        
+        //loop for movie
+        for i in 0..<movieNo.count
+       {
+            // to find input no in movieNo array
+            if inputNo == movieNo[i]
+            {
+                //to print movie cinema list
+                print(movieCinema[i])
+            }
+       }
+       
+        //loop for series
+        for i in 0..<seriesNo.count
+       {
+            // to find input no in seriesNo array
+            if inputNo == seriesNo[i]
+            {
+                // to print total number of episodes in series
+                print("Total number of episodes of series \(seriesTitle[i].uppercased()) is",seriesEpisodes[i])
+            }
+       }
+       print("\n")
+    }
+    
+    // function for reverse movie name
+    func task3()
+    {
+        print("task3")
+        print("Enter a cinema name")
+        //Enter cinema name here
+        let cinemaName = String(readLine()!.lowercased())
+        
+        //loop for find cinema name in movieCinema array
+        for i in 0..<movieNo.count
+        {
+           if movieCinema[i] == cinemaName
+           {
+                //for print reverese movie name
+                print(String(movieTitle[i].reversed()))
+           }
+        }
+    }
+}
+
+//declaring a var who contain a class data type
+var a:Entertainment = Entertainment()
+
+//calling all methods of class
+a.task0()
+a.task1()
+a.task2()
+a.task3()
